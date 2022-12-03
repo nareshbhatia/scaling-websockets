@@ -1,0 +1,16 @@
+{
+  "name": "scaling-websockets",
+  "version": "1.0.0",
+  "description": "Scaling Websockets",
+  "main": "index.js",
+  "type": "module",
+  "author": "Naresh Bhatia",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.8.0"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "proseWrap": "always"
+  }
+}
