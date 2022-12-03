@@ -1,0 +1,38 @@
+config:
+  target: 'http://localhost:8080'
+  phases:
+    - duration: 60
+      arrivalRate: 1
+      name: Warm up
+    - duration: 120
+      arrivalRate: 5
+      rampTo: 10
+      name: Ramp up load
+    - duration: 180
+      arrivalRate: 20
+      name: Sustained load
+
+scenarios:
+  - name: Chat test
+    engine: ws # Enable the Socket.io engine
+    flow:
+      - send: 'Hello 1'
+      - think: 1
+      - send: 'Hello 2'
+      - think: 1
+      - send: 'Hello 3'
+      - think: 1
+      - send: 'Hello 4'
+      - think: 1
+      - send: 'Hello 5'
+      - think: 1
+      - send: 'Hello 6'
+      - think: 1
+      - send: 'Hello 7'
+      - think: 1
+      - send: 'Hello 8'
+      - think: 1
+      - send: 'Hello 9'
+      - think: 1
+      - send: 'Hello 10'
+      - think: 1

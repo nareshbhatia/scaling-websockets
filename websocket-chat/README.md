@@ -1,4 +1,4 @@
-# websocket library demo
+# Chat app using the websocket library
 
 Run as follows:
 
@@ -15,3 +15,5 @@ let ws = new WebSocket('ws://localhost:8080');
 ws.onmessage = (message) => console.log(message.data);
 ws.send('Hello');
 ```
+
+To load test this server see instructions under chat-test.
