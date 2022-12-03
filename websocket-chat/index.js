@@ -24,6 +24,7 @@ webSocketServer.on('request', (request) => {
   const connectionId = nextId++;
   connections.set(connectionId, connection);
   console.log(`Connection ${connectionId} accepted`);
+  console.log(`Total connections: ${connections.size}`);
 
   connection.on('message', (message) => {
     const echoMessage = `Connection ${connectionId}: ${message.utf8Data}`;
@@ -35,6 +36,7 @@ webSocketServer.on('request', (request) => {
 
   connection.on('close', () => {
     console.log(`Connection ${connectionId} closed`);
-    connections.delete(ws);
+    connections.delete(connectionId);
+    console.log(`Total connections: ${connections.size}`);
   });
 });
