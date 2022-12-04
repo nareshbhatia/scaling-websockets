@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  lb:
+    image: haproxy
+    volumes:
+      - ./haproxy:/usr/local/etc/haproxy
+    ports:
+      - '8080:8080'
+    depends_on:
+      - wss1
+      - wss2
+      - wss3
+
+  wss1:
+    image: nareshbhatia/websocket-server:1.0.0
+    environment:
+      - WSS_ID=1
+    depends_on:
+      - rds
+
+  wss2:
+    image: nareshbhatia/websocket-server:1.0.0
+    environment:
+      - WSS_ID=2
+    depends_on:
+      - rds
+
+  wss3:
+    image: nareshbhatia/websocket-server:1.0.0
+    environment:
+      - WSS_ID=3
+    depends_on:
+      - rds
+
+  rds:
+    image: redis

@@ -70,7 +70,7 @@ Here's a sample report for arrival rate of 50 users/second:
 
 ## Results for ws-chat
 
-Results below ~4000 errors at a sustained load of 50 users/second, which is
+Results below show ~4000 errors at a sustained load of 50 users/second, which is
 somewhat less that ~5200 errors in the case of websocket-chat.
 
 ### Arrival rate: 50 users/second
@@ -90,4 +90,26 @@ p95: ......................................................................... 4
 p99: ......................................................................... 55843.8
 websocket.messages_sent: ....................................................... 60640
 websocket.send_rate: ........................................................... 203/sec
+```
+
+## Results for ws-chat-with-redis
+
+Results below show 0 errors at a sustained load of 50 users/second, which is
+fantastic!!!
+
+### Arrival rate: 50 users/second
+
+```text
+vusers.completed: .............................................................. 9964
+vusers.created: ................................................................ 9964
+vusers.created_by_name.Chat test: .............................................. 9964
+vusers.failed: ................................................................. 0
+vusers.session_length:
+min: ......................................................................... 10003.4
+max: ......................................................................... 341504
+median: ...................................................................... 114730.2
+p95: ......................................................................... 287900.2
+p99: ......................................................................... 337855.8
+websocket.messages_sent: ....................................................... 99640
+websocket.send_rate: ........................................................... 262/sec
 ```
