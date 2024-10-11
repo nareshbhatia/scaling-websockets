@@ -1,17 +1,21 @@
 config:
   target: 'http://localhost:8080'
   phases:
+    # Warm up: Add 1 user/sec for 1 minute
     - duration: 60
       arrivalRate: 1
       name: Warm up
+    # Ramp up load: Add 5 users/sec, but ramp up to 10 users/sec in 2 minutes
     - duration: 120
       arrivalRate: 5
       rampTo: 10
       name: Ramp up load
+    # Sustained load: Add 20 users/sec for 3 minutes
     - duration: 180
-      arrivalRate: 20
+      arrivalRate: 50
       name: Sustained load
 
+# A scenario is a series of steps executed by a user
 scenarios:
   - name: Chat test
     engine: ws # Enable the Socket.io engine

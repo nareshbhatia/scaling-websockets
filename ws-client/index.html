@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>WebSocket Client</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <h1>WebSocket Client</h1>
+
+    <div class="text-input">
+      <label for="message-input">Message</label>
+      <input type="text" id="message-input" />
+    </div>
+
+    <h2>Messages</h2>
+    <ul id="messages"></ul>
+
+    <script>
+      let ws = new WebSocket('ws://localhost:8080');
+      const messages = document.getElementById('messages');
+      const messageInput = document.getElementById('message-input');
+
+      messageInput.onkeypress = (e) => {
+        if (e.key === 'Enter') {
+          ws.send(messageInput.value);
+          messageInput.value = '';
+        }
+      };
+
+      ws.onmessage = (message) => {
+        const li = document.createElement('li');
+        li.innerText = message.data;
+        messages.appendChild(li);
+      };
+    </script>
+  </body>
+</html>

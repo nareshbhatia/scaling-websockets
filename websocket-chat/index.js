@@ -15,7 +15,7 @@ const webSocketServer = new WebSocketServer({
 
 // Start httpServer
 httpServer.listen(8080, () =>
-  console.log('WebSocket server listening on port 8080')
+  console.log('WebSocket server listening on port 8080'),
 );
 
 // Accept connection requests
@@ -28,7 +28,6 @@ webSocketServer.on('request', (request) => {
 
   connection.on('message', (message) => {
     const echoMessage = `Connection ${connectionId}: ${message.utf8Data}`;
-    console.log(echoMessage);
     [...connections.values()].forEach((connection) => {
       connection.sendUTF(echoMessage);
     });

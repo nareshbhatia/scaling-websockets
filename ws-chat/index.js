@@ -5,7 +5,7 @@ let nextId = 1;
 
 // Create webSocketServer
 const webSocketServer = new WebSocketServer({ port: 8080 });
-console.log('WebSocket server listening on port 8080')
+console.log('WebSocket server listening on port 8080');
 
 // Accept connection requests
 webSocketServer.on('connection', (ws) => {
@@ -16,7 +16,6 @@ webSocketServer.on('connection', (ws) => {
 
   ws.on('message', (data) => {
     const echoMessage = `Socket ${socketId}: ${data}`;
-    console.log(echoMessage);
     [...sockets.values()].forEach((socket) => {
       socket.send(echoMessage);
     });

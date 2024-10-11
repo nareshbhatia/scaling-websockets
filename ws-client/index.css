@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  padding: 2rem;
+}
+
+.text-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.text-input input {
+  width: 30rem;
+}

@@ -1,0 +1,16 @@
+{
+  "name": "chat-test",
+  "version": "1.0.0",
+  "description": "## Running load test",
+  "main": "index.js",
+  "scripts": {
+    "gen-report": "artillery report result.json",
+    "load-test": "artillery run chat-test.yml --output result.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "artillery": "^2.0.20"
+  }
+}

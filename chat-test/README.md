@@ -5,19 +5,19 @@
 Install [Artillery](https://www.artillery.io/) globally:
 
 ```shell
-npm install -g artillery
+npm ci
 ```
 
 Run load test:
 
 ```shell
-artillery run chat-test.yml --output result.json
+npm run load-test
 ```
 
 Create an HTML report:
 
 ```shell
-artillery report result.json
+npm run gen-report
 ```
 
 You can change the load test configuration by editing
@@ -28,7 +28,7 @@ You can change the load test configuration by editing
 Results below shows no errors for a sustained load of 20 users/second, but ~5200
 errors at a sustained load of 50 users/second.
 
-### Arrival rate: 20 users/second
+### Arrival rate: 20 users/second (2022-12-03)
 
 ```text
 vusers.completed: .............................................................. 4570
@@ -45,7 +45,7 @@ websocket.messages_sent: .......................................................
 websocket.send_rate: ........................................................... 138/sec
 ```
 
-### Arrival rate: 50 users/second
+### Arrival rate: 50 users/second (2022-12-03)
 
 ```text
 errors.connect ECONNRESET 127.0.0.1:8080: ...................................... 2
@@ -73,7 +73,7 @@ Here's a sample report for arrival rate of 50 users/second:
 Results below show ~4000 errors at a sustained load of 50 users/second, which is
 somewhat less that ~5200 errors in the case of websocket-chat.
 
-### Arrival rate: 50 users/second
+### Arrival rate: 50 users/second (2022-12-03)
 
 ```text
 errors.connect ECONNRESET 127.0.0.1:8080: ...................................... 1
@@ -97,7 +97,7 @@ websocket.send_rate: ...........................................................
 Results below show 0 errors at a sustained load of 50 users/second, which is
 fantastic!!!
 
-### Arrival rate: 50 users/second
+### Arrival rate: 50 users/second (2022-12-03)
 
 ```text
 vusers.completed: .............................................................. 9964
@@ -112,4 +112,24 @@ p95: ......................................................................... 2
 p99: ......................................................................... 337855.8
 websocket.messages_sent: ....................................................... 99640
 websocket.send_rate: ........................................................... 262/sec
+```
+
+### Arrival rate: 50 users/second (2024-10-10)
+
+```text
+errors.ECONNRESET: ............................................................. 24
+errors.socket hang up: ......................................................... 24
+vusers.completed: .............................................................. 9936
+vusers.created: ................................................................ 9960
+vusers.created_by_name.Chat test: .............................................. 9960
+vusers.failed: ................................................................. 24
+vusers.session_length:
+  min: ......................................................................... 10000.7
+  max: ......................................................................... 83043.5
+  mean: ........................................................................ 15234.3
+  median: ...................................................................... 11274.1
+  p95: ......................................................................... 45720.8
+  p99: ......................................................................... 60495.1
+websocket.messages_sent: ....................................................... 99360
+websocket.send_rate: ........................................................... 359/sec
 ```

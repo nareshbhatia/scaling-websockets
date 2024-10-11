@@ -20,10 +20,10 @@ async function main() {
 
   // Set Redis error handlers
   redisPublisher.on('error', (err) =>
-    console.log(`WSS-${WSS_ID}: redis publisher error:`, err)
+    console.log(`WSS-${WSS_ID}: redis publisher error:`, err),
   );
   redisSubscriber.on('error', (err) =>
-    console.log(`WSS-${WSS_ID}: redis subscriber error:`, err)
+    console.log(`WSS-${WSS_ID}: redis subscriber error:`, err),
   );
 
   // Connect to Redis
@@ -51,7 +51,6 @@ async function main() {
 
     ws.on('message', async (data) => {
       const echoMessage = `WSS-${WSS_ID}: Socket ${socketId}: ${data}`;
-      console.log(echoMessage);
       // Publish message to Redis
       await redisPublisher.publish(CHAT_CHANNEL, echoMessage);
     });
